@@ -56,7 +56,7 @@ app.get('/get-users',(req,res)=>{
 app.get('/get-video/:id',(req,res)=>{
     mongoClient.connect(ConnectionString).then(connectionObject=>{
         var database=connectionObject.db("videodb");
-        database.collection('tblvideos').findOne({VideoId:parseInt(req.params.id)}).then(documents=>{
+        database.collection('tblvideos').find({VideoId:parseInt(req.params.id)}).toArray().then(documents=>{
             res.send(documents);
             res.end();
         });
