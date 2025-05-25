@@ -11,6 +11,7 @@ export function UserDash(){
 
     const [searchStr,setSearchStr]=useState('');
     const [videos,setVideos]=useState([{VideoId:0,Title:'',Url:'',Description:'',Likes:0,Dislikes:0,Views:0,CategoryId:0,Comments:['']}]);
+    const [category,SetCategory]=useState('');
 
     let dispatch=useDispatch();
 
@@ -38,6 +39,7 @@ export function UserDash(){
             setVideos(response.data);
         })
     }
+
 
     useEffect(()=>{
         LoadVideos(`http://127.0.0.1:5050/get-videos`);
@@ -68,17 +70,6 @@ export function UserDash(){
                         <div className=" input-group">
                             <input onChange={CollectSearchStr}  type="number" placeholder="VideoId.." className=" form-control"/>
                             <button onClick={handleSearchClick}  className="btn btn-warning bi bi-search"></button>
-                        </div>
-                    </div>
-                    <div>
-                        <label className=" form-label fw-bold">Select Category</label>
-                        <div>
-                            <select className=" form-select">
-                                <option>Select Category</option>
-                                <option>Java</option>
-                                <option>React</option>
-                                <option>Cloud</option>
-                            </select>
                         </div>
                     </div>
                 </div>
