@@ -2,6 +2,7 @@ const mongoClient= require('mongodb').MongoClient;
 var express=require('express');
 const cors= require('cors');
 const { MongoClient } = require('mongodb');
+require('dotenv').config();
 
 var app=express();
 //CORS is required for handling request method like - GET,POST,PUT,DELETE....;
@@ -10,7 +11,7 @@ app.use(cors());
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
-var ConnectionString="mongodb://127.0.0.1:27017";
+var ConnectionString=process.env.MONGO_URL;
 
 //Api routes
 app.get('/get-admin',(req,res)=>{
@@ -169,7 +170,8 @@ app.delete("/delete-video/:id",(req,res)=>{
     })
 })
 
+var port=process.env.PORT ||5050;
 
-
-app.listen(5050);
-console.log(`server start with http://127.0.0.1:5050`);
+app.listen(port,()=>{
+    console.log(`server start with http://127.0.0.1:5050`);
+});
