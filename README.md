@@ -4,7 +4,8 @@ A full-stack video library application built with **React**, **Redux Toolkit**, 
 
 ## 🚀 Live Links
 
-- **Frontend** (Vercel): [videos-project-two.vercel.app](https://videos-project-two.vercel.app)
+- **Frontend** (Vercel): [videos-project.vercel.app](https://videos-project-liard.vercel.app
+)
 - **Backend** (Render): [videos-project.onrender.com](https://videos-project.onrender.com)
 
 ## 📂 Project Structure
