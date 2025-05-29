@@ -22,7 +22,7 @@ export function UserDash(){
         setSearchStr(e.target.value);
     }
     function handleSearchClick(){
-        axios.get(`${process.env.REACT_APP_API_BASE_URL}/get-video/${searchStr}`)
+        axios.get(`https://videos-project.onrender.com/get-video/${searchStr}`)
         .then(response=>{
             setVideos([response.data]);
         })
