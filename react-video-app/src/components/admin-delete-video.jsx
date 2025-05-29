@@ -11,17 +11,17 @@ export function AdminDeleteVideo(){
     let navigate=useNavigate();
 
     function HandleDeleteClick(){
-        axios.delete(`${import.meta.env.VITE_API_BASE_URL}/${params.id}`);
+        axios.delete(`${process.env.REACT_APP_API_BASE_URL}/${params.id}`);
         alert(`${videos[0].Title} is deleted.`);
         navigate('/admin-dash');
     }
 
     useEffect(()=>{
-        axios.get(`${import.meta.env.VITE_API_BASE_URL}/${params.id}`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/${params.id}`)
         .then(response=>{
             setvideos([response.data]);
         })
-    },[]);
+    },[params.id]);
     
     return(
         <div className=" bg-white p-3 m-3 w-25">

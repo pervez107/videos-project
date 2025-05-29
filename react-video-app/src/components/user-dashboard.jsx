@@ -22,7 +22,7 @@ export function UserDash(){
         setSearchStr(e.target.value);
     }
     function handleSearchClick(){
-        axios.get(`${import.meta.env.VITE_API_BASE_URL}/get-video/${searchStr}`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/get-video/${searchStr}`)
         .then(response=>{
             setVideos([response.data]);
         })
@@ -42,7 +42,7 @@ export function UserDash(){
 
 
     useEffect(()=>{
-        LoadVideos(`${import.meta.env.VITE_API_BASE_URL}/get-videos`);
+        LoadVideos(`${process.env.REACT_APP_API_BASE_URL}/get-videos`);
     },[]);
 
     function HandleSaveclick(video){

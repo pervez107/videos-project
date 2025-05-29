@@ -8,7 +8,7 @@ export function AdminDashboard(){
     const [Videos,setVideos]=useState([{VideoId:0,Title:'',Url:'',Description:'',Likes:0,Dislikes:0,Views:0,CategoryId:0,Comments:[]}]);
 
     useEffect(()=>{
-        axios.get(`${import.meta.env.VITE_API_BASE_URL}/get-videos`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/get-videos`)
         .then(response=>{
             setVideos(response.data);
         })

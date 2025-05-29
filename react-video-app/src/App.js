@@ -10,7 +10,6 @@ import { AdminDeleteVideo } from "./components/admin-delete-video";
 import { UserRegister } from "./components/user-register";
 import { UserDash } from "./components/user-dashboard";
 
-
 export function App() {
   return (
     <div className="body-background">

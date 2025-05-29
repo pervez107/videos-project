@@ -25,7 +25,7 @@ export function AdminEditVideo(){
             CategoryId: videos[0].CategoryId
         },
         onSubmit: (values)=>{
-            axios.put(`${import.meta.env.VITE_API_BASE_URL}/edit-video/${params.id}`, values);
+            axios.put(`${process.env.REACT_APP_API_BASE_URL}/edit-video/${params.id}`, values);
             alert('Video Edited Successfully..');
             navigate('/admin-dash');
         },
@@ -35,7 +35,7 @@ export function AdminEditVideo(){
     
 
     function LoadCategories(){
-        axios.get(`${import.meta.env.VITE_API_BASE_URL}/get-categories`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/get-categories`)
         .then(response=>{
             response.data.unshift({CategoryId:-1, CategoryName:'Select a Category'});
             setCategories(response.data);
@@ -45,7 +45,7 @@ export function AdminEditVideo(){
     useEffect(()=>{
         LoadCategories();
 
-        axios.get(`${import.meta.env.VITE_API_BASE_URL}/${params.id}`)
+        axios.get(`${process.env.REACT_APP_API_BASE_URL}/${params.id}`)
         .then(response=>{
             setVideos([response.data]);
         })
