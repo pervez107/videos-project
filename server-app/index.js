@@ -6,7 +6,11 @@ require('dotenv').config();
 
 var app=express();
 //CORS is required for handling request method like - GET,POST,PUT,DELETE....;
-app.use(cors());
+app.use(cors({
+    origin: 'https://videos-project-two.vercel.app', // use your actual Vercel domain here
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}));
 //Required for converting data into JSON 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
@@ -172,6 +176,6 @@ app.delete("/delete-video/:id",(req,res)=>{
 
 var port=process.env.PORT ||5050;
 
-app.listen(port,()=>{
-    console.log(`server start with http://127.0.0.1:5050`);
+app.listen(port,'0.0.0.0',()=>{
+    console.log(`Server started on port ${port}`);
 });

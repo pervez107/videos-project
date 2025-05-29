@@ -16,7 +16,7 @@ export function UserRegister(){
             Mobile:''
         },
         onSubmit:(user)=>{
-            axios.post(`http://127.0.0.1:5050/register-user`,user);
+            axios.post(`${import.meta.env.VITE_API_BASE_URL}/register-user`,user);
             alert('user register successfully.');
             navigate('/users-login');
         }

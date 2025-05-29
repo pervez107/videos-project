@@ -11,13 +11,13 @@ export function AdminDeleteVideo(){
     let navigate=useNavigate();
 
     function HandleDeleteClick(){
-        axios.delete(`http://127.0.0.1:5050/delete-video/${params.id}`);
+        axios.delete(`${import.meta.env.VITE_API_BASE_URL}/${params.id}`);
         alert(`${videos[0].Title} is deleted.`);
         navigate('/admin-dash');
     }
 
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5050/get-video/${params.id}`)
+        axios.get(`${import.meta.env.VITE_API_BASE_URL}/${params.id}`)
         .then(response=>{
             setvideos([response.data]);
         })

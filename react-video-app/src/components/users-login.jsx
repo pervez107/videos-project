@@ -18,7 +18,7 @@ export function UsersLogin(){
             Password:''
         },
         onSubmit:(user)=>{
-                axios.get(`http://127.0.0.1:5050/get-users`)
+                axios.get(`${import.meta.env.VITE_API_BASE_URL}/get-users`)
                 .then(response=>{
                     var newuser=response.data.find(item=>item.UserId===user.UserId);
                     if(newuser){

@@ -13,7 +13,7 @@ export function AdminLogin(){
             Password:''
         },
         onSubmit:(admin)=>{
-            axios.get(`http://127.0.0.1:5050/get-admin`)
+            axios.get(`${import.meta.env.VITE_API_BASE_URL}/get-admin`)
             .then(response=>{
                 var user=response.data.find(item=>item.UserId===admin.UserId);
                 if(user){

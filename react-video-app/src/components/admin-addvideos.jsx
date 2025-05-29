@@ -23,14 +23,14 @@ export function AdminAddVideos(){
             CategoryId:0
         },
         onSubmit:(video)=>{
-            axios.post(`http://127.0.0.1:5050/add-video`,video);
+            axios.post(`${import.meta.env.VITE_API_BASE_URL}/add-video`,video);
             alert('Video Added successfully.');
             navigate('/admin-dash');
         }
     })
 
     useEffect(()=>{
-        axios.get(`http://127.0.0.1:5050/get-categories`)
+        axios.get(`${import.meta.env.VITE_API_BASE_URL}/get-categories`)
         .then(response=>{
             response.data.unshift({
                 CategoryId:-1,
