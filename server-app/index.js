@@ -6,11 +6,23 @@ require('dotenv').config();
 
 var app=express();
 //CORS is required for handling request method like - GET,POST,PUT,DELETE....;
+const allowedOrigins = [
+  'http://localhost:3000',             // React local dev
+  'https://videos-project-two.vercel.app'  // Your deployed frontend domain
+];
+
 app.use(cors({
-    origin: 'https://videos-project-two.vercel.app', // use your actual Vercel domain here
+    origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    return callback(new Error('Not allowed by CORS'));
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
+
+
 //Required for converting data into JSON 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
