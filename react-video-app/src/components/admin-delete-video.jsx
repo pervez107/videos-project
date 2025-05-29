@@ -11,13 +11,13 @@ export function AdminDeleteVideo(){
     let navigate=useNavigate();
 
     function HandleDeleteClick(){
-        axios.delete(`${process.env.REACT_APP_API_BASE_URL}/${params.id}`);
+        axios.delete(`https://videos-project.onrender.com/delete-video/${params.id}`);
         alert(`${videos[0].Title} is deleted.`);
         navigate('/admin-dash');
     }
 
     useEffect(()=>{
-        axios.get(`${process.env.REACT_APP_API_BASE_URL}/${params.id}`)
+        axios.get(`https://videos-project.onrender.com/get-video/${params.id}`)
         .then(response=>{
             setvideos([response.data]);
         })

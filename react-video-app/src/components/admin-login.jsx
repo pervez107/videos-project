@@ -13,7 +13,7 @@ export function AdminLogin(){
             Password:''
         },
         onSubmit:(admin)=>{
-            axios.get(`${process.env.REACT_APP_API_BASE_URL}/get-admin`)
+            axios.get(`https://videos-project.onrender.com/get-admin`)
             .then(response=>{
                 var user=response.data.find(item=>item.UserId===admin.UserId);
                 if(user){

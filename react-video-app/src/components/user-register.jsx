@@ -16,7 +16,7 @@ export function UserRegister(){
             Mobile:''
         },
         onSubmit:(user)=>{
-            axios.post(`${process.env.REACT_APP_API_BASE_URL}/register-user`,user);
+            axios.post(`https://videos-project.onrender.com/register-user`,user);
             alert('user register successfully.');
             navigate('/users-login');
         }
