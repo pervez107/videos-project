@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie"
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToViewLater } from "../slicers/video-slicer";
 import store from "../store/store";
@@ -14,6 +14,7 @@ export function UserDash(){
     const [category,SetCategory]=useState('');
 
     let dispatch=useDispatch();
+    let VideosCounts=useSelector(state => state.store.VideosCounts);
 
     let navigate=useNavigate();
     const [cookies,setCookies,removeCookies]=useCookies(['username']);
@@ -50,7 +51,7 @@ export function UserDash(){
         dispatch(addToViewLater(video));
     }
 
-    
+
 
     return(
         <div className="bg-light p-3 m-3">
@@ -58,8 +59,9 @@ export function UserDash(){
                 <div><span>{cookies.username}</span> <span>Dashboard</span></div>
                 <div>
                     <button className="btn btn-primary">
-                        {store.getState().store.VideosCounts}
+                        [{VideosCounts}] Watch-Later
                     </button>
+                    
                 </div>
                 <div><button onClick={HandleSignout} className="btn btn-link">Signout</button></div>
             </h3>
